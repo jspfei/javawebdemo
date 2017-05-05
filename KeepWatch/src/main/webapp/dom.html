@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script>
+    function addElement() {
+         var person = document.createTextNode(form1.person.value);
+         var content = document.createTextNode(form1.content.value);
+         var td_persion = document.createElement("td");
+         var td_content =document.createElement("td");
+         var tr = document.createElement("tr");
+         var tbody = document.createElement("tbody");
+         td_persion.appendChild(person);
+         td_content.appendChild(content);
+         tr.appendChild(td_persion);
+         tr.appendChild(td_content);
+         tbody.appendChild(tr);
+
+         var tComment = document.getElementById("comment");
+         tComment.appendChild(tbody);
+         form1.person.value="";
+         form1.content.value = "";
+
+    }
+    function deleteLastE() {
+        var tComment = document.getElementById("comment");
+        if(tComment.rows.length>1){
+            tComment.deleteRow(tComment.rows.length-1);
+        }
+    }
+</script>
+<body >
+        <table width="600" border="1" align="center" cellpadding="0" cellspacing="0"
+               bordercolor="#FFFFFF" id="comment">
+            <tr>
+                <td width="18%" height="27" align="center" bgcolor="aqua">评论人</td>
+                <td width="82%" height="27" align="center" bgcolor="aqua">评论内容</td>
+            </tr>
+
+        </table>
+        <p align="center">
+
+        <form name="form1" method="post" action="" >
+            评论人：<input name="person" type="text" id="person" size="40"><br>
+            评论内容：<textarea name="content" cols="60" id="content"></textarea><br>
+            <input name="Button" type="button" class="btn_grey" value="发表" onclick="addElement()"/>
+            <input name="Reset" type="reset" class="btn_grey" value="重置" >
+            <input name="Button" type="button" class="btn_grey" value="删除最后一个" onclick="deleteLastE()"/>
+        </form>
+
+        </p>
+
+</body>
+</html>
